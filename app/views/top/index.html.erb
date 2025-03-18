@@ -16,14 +16,15 @@
             <div class="container px-4">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav  ms-auto align-middle">
                         <li class="nav-item"><a class="nav-link" href="#about_page">サイトについて</a></li>
                         <li class="nav-item"><a class="nav-link" href="#new_and_popular_posts">話題の投稿</a></li>
                         <li class="nav-item"><a class="nav-link" href="#search_posts">検索</a></li>
 												<% if user_signed_in? %>
 													<li class="nav-item dropdown">
 														<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-															メニュー
+															<%= image_tag current_user.account_image.url, size: "50x50", class: "rounded-circle" %>
+															<%= current_user.account_name %>
 														</a>
 														<ul class="dropdown-menu">
 															<li><%= link_to "プロフィールを編集", edit_user_registration_path, class: "dropdown-item" %></li>

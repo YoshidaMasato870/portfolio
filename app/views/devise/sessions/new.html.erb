@@ -8,29 +8,22 @@
           <h2>ログイン</h2>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field">
-              <%= f.label :email %><br />
+              <%= f.label :account_name %><br />
               <div class="d-grid col-12 mb-2">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレスを入力" %>
+                <%= f.text_field :account_name, autofocus: true, autocomplete: "account", placeholder: "アカウント名を入力" %>
               </div>
             </div>
 
-            <div class="field">
+            <div class="field mb-3">
               <%= f.label :password %><br />
               <div class="d-grid col-12">
                 <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワードを入力" %>
               </div>
             </div>
 
-            <% if devise_mapping.rememberable? %>
-              <div class="field mb-2">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
-              </div>
-            <% end %>
-
             <div class="d-grid col-6 mx-auto">
               <div class="actions mb-2">
-                <%= f.submit "ログイン" %>
+                <%= f.submit "ログイン", class: "btn btn-primary" %>
               </div>
             </div>
           <% end %>
