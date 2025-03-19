@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_17_125230) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_18_062211) do
+  create_table "plans", force: :cascade do |t|
+    t.string "plan_name", null: false
+    t.string "plan_image"
+    t.string "plan_introduction"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
