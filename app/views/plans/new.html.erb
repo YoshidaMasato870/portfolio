@@ -7,6 +7,7 @@
 				<div class="col-6">
 					<h2>プランを作成</h2>
 					<%= form_with model: @plan do |f| %>
+						<span class="text-danger">*</span>
 						<%= f.label :plan_name %></br >
 						<div class="d-grid col-12 mb-2">
 							<%= f.text_field :plan_name %>

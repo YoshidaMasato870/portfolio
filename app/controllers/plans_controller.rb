@@ -1,7 +1,4 @@
 class PlansController < ApplicationController
-	def index
-	end
-	
 	def new
 		@plan = Plan.new
 	end
@@ -16,7 +13,14 @@ class PlansController < ApplicationController
 		end
 	end
 
+	def destroy
+		@plan = Plan.find(params[:id])
+		@plan.destroy
+		redirect_to myplan_plan_path(current_user.id)
+	end
+
 	def myplan
+		@plans = Plan.where(user_id: current_user.id)
 	end
 
 	private
