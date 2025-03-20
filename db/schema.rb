@@ -10,15 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_20_004055) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_20_025531) do
   create_table "plans", force: :cascade do |t|
-    t.string "plan_name", null: false
-    t.string "plan_image"
-    t.string "plan_introduction"
+    t.string "name", null: false
+    t.string "image"
+    t.string "introduction"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "area_id"
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "introduction"
+    t.integer "relation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -29,9 +38,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_20_004055) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "account_name", null: false
-    t.string "account_comment"
-    t.string "account_image"
+    t.string "name", null: false
+    t.string "comment"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

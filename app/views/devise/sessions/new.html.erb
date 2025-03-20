@@ -8,9 +8,9 @@
           <h2>ログイン</h2>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field">
-              <%= f.label :account_name %><br />
+              <%= f.label :name %><br />
               <div class="d-grid col-12 mb-2">
-                <%= f.text_field :account_name, autofocus: true, autocomplete: "account", placeholder: "アカウント名を入力" %>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "アカウント名を入力" %>
               </div>
             </div>
 

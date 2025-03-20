@@ -21,6 +21,15 @@ class PlansController < ApplicationController
 		@plan = Plan.find(params[:id])
 	end
 
+	def update
+		@plan = Plan.find(params[:id])
+		if @plan.update(plan_palams)
+			redirect_to myplan_plan_path(@plan.user_id)
+		else
+			render :edit
+		end
+	end
+
 	def destroy
 		@plan = Plan.find(params[:id])
 		@plan.destroy
@@ -33,6 +42,6 @@ class PlansController < ApplicationController
 
 	private
 		def plan_palams
-			params.require(:plan).permit(:plan_name, :plan_image, :area_id, :plan_introduction, :user_id)
+			params.require(:plan).permit(:name, :image, :area_id, :introduction, :user_id)
 		end
 end

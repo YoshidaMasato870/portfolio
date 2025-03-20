@@ -20,21 +20,21 @@
 
           <div class="field mb-2">
             <span class="text-danger">*</span>
-            <%= f.label :account_name %><br />
+            <%= f.label :name %><br />
             <div class="d-grid col-12">
-              <%= f.text_field :account_name, autocomplete: "account_name" %>
+              <%= f.text_field :name, autocomplete: "name" %>
             </div>
           </div>
 
           <div class="field mb-2">
-            <%= f.label :account_image %>
-            <%= f.file_field :account_image %>
+            <%= f.label :image %>
+            <%= f.file_field :image %>
           </div>
 
           <div class="field mb-2">
-            <%= f.label :account_comment %><br />
+            <%= f.label :comment %><br />
             <div class="d-grid col-12">
-              <%= f.text_area :account_comment, autocomplete: "account_name" %>
+              <%= f.text_area :comment, autocomplete: "comment" %>
             </div>
           </div>
 

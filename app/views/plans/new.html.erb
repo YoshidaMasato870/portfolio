@@ -8,13 +8,13 @@
 					<h2>プランを作成</h2>
 					<%= form_with model: @plan do |f| %>
 						<span class="text-danger">*</span>
-						<%= f.label :plan_name %></br >
+						<%= f.label :name %></br >
 						<div class="d-grid col-12 mb-2">
-							<%= f.text_field :plan_name %>
+							<%= f.text_field :name %>
 						</div>
-						<%= f.label :plan_image %></br >
+						<%= f.label :image %></br >
 						<div class="d-grid col-12 mb-2">
-							<%= f.file_field :plan_image %>
+							<%= f.file_field :image %>
 						</div>
 						<span class="text-danger">*</span>
 						<%= f.label :area_id %>
@@ -22,9 +22,9 @@
 							<%= f.select :area_id, 
 							[["北海道", 1], ["東北", 2], ["関東", 3], ["中部", 4], ["近畿", 5], ["中国・四国", 6], ["九州", 7],["沖縄", 8] ] %>
 						</div>
-						<%= f.label :plan_introduction %></br >
+						<%= f.label :introduction %></br >
 						<div class="d-grid col-12 mb-4">
-							<%= f.text_area :plan_introduction %>
+							<%= f.text_area :introduction %>
 						</div>
 						<%= f.submit "作成", class: "btn btn-primary me-1" %>
 						<%= link_to :back, class: "btn btn-primary" do %>

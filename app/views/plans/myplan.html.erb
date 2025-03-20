@@ -21,10 +21,10 @@
 					<tbody>
 						<% @plans.each do |plan| %>
 						<tr>
-							<th><%= image_tag plan.plan_image.url, size: "50x50" %></th>
-							<th><%= plan.plan_name %></th>
+							<th><%= image_tag plan.image.url, size: "50x50" %></th>
+							<th><%= plan.name %></th>
 							<th><%= change_area(plan.area_id) %></th>
-							<th><%= plan.plan_introduction %></th>
+							<th><%= plan.introduction %></th>
 							<th>
 								<%= link_to plan_path(plan.id), class: "btn btn-sm btn-primary" do %>
 									詳細

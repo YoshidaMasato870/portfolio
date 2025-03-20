@@ -12,15 +12,15 @@
 
           <div class="field mb-2">
             <span class="text-danger">*</span>
-            <%= f.label :account_name %><br />
+            <%= f.label :name %><br />
             <div class="d-grid col-12">
-              <%= f.text_field :account_name, autofocus: true, autocomplete: "account_name", placeholder: "アカウント名を入力" %>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "アカウント名を入力" %>
             </div>
           </div>
 
           <div class="field mb-2">
-            <%= f.label :account_image %>
-            <%= f.file_field :account_image %>
+            <%= f.label :image %>
+            <%= f.file_field :image %>
           </div>
 
           <div class="field mb-2">
