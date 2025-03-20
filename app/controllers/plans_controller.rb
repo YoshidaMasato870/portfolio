@@ -13,6 +13,10 @@ class PlansController < ApplicationController
 		end
 	end
 
+	def show
+		@plan = Plan.find(params[:id])
+	end
+
 	def destroy
 		@plan = Plan.find(params[:id])
 		@plan.destroy
