@@ -4,15 +4,16 @@
 		<div class="col-8">
 			<h2>作成済みプラン一覧</h2>
 			<div class="d-flex flex-row-reverse mb-2">
-				<div class="col-2 me-4"><%= link_to "プランを作成する", new_plan_path %></div>
+				<div class="col-2"><%= link_to "プランを作成", new_plan_path %></div>
 			</div>
 			<% if @plans.exists? %>
 				<table class="table">
 					<head>
 						<tr>
-							<th scope="col" style="width: 10%"></th>
+							<th scope="col" style="width: 8%"></th>
 							<th scope="col" style="width: 20%">プラン名</th>
-							<th scope="col" style="width: 54%">プラン紹介</th>
+							<th scope="col" style="width: 12%">エリア</th>
+							<th scope="col" style="width: 34%">プラン紹介</th>
 							<th scope="col" style="width: 8%">詳細</th>
 							<th scope="col" style="width: 8%">削除</th>
 						</tr>
@@ -22,6 +23,7 @@
 						<tr>
 							<th><%= image_tag plan.plan_image.url, size: "50x50" %></th>
 							<th><%= plan.plan_name %></th>
+							<th><%= change_area(plan.area_id) %></th>
 							<th><%= plan.plan_introduction %></th>
 							<th>
 								<%= link_to plan_path(plan.id), class: "btn btn-sm btn-primary" do %>

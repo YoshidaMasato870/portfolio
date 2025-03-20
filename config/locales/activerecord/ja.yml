@@ -16,4 +16,5 @@ ja:
       plan:
         plan_name: 'プラン名'
         plan_image: 'イメージ画像'
+        area_id: 'エリア'
         plan_introduction: 'プラン紹介'

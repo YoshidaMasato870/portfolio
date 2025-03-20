@@ -3,6 +3,11 @@
 		<div class="col-3"></div>
 		<div class="col-6">
 			<h2>プラン詳細</h2>
+			<% if user_signed_in? %>
+				<div class="d-flex flex-row-reverse mb-2">
+					<div class="col-2 me-4"><%= link_to "プランを編集", edit_plan_path(@plan.id) %></div>
+				</div>
+			<% end %>
 			<div class="d-flex flex-row mt-4 mb-2">
 				<div class="me-4">
 					<%= image_tag @plan.plan_image.url, size: "100x100" %>
@@ -12,14 +17,18 @@
 			<table>
 				<tr>
 					<th>エリア</th>
-					<td></td>
+					<td><%= change_area(@plan.area_id) %></td>
 				</tr>
 				<tr>
 					<th>プラン詳細</th>
 					<td><%= @plan.plan_introduction %></td>
 				</tr>
 			</table>
-			<%= link_to "戻る", :back %>
+			<% if user_signed_in? %>
+				<%= link_to "戻る", myplan_plan_path(@plan.user_id) %>
+			<% else %>
+				<%= link_to "戻る", :back %>
+			<% end %>
 		</div>
 		<div class="col-3"></div>
 	</div>

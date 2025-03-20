@@ -16,6 +16,12 @@
 						<div class="d-grid col-12 mb-2">
 							<%= f.file_field :plan_image %>
 						</div>
+						<span class="text-danger">*</span>
+						<%= f.label :area_id %>
+						<div class="d-grid col-12 mb-2">
+							<%= f.select :area_id, 
+							[["北海道", 1], ["東北", 2], ["関東", 3], ["中部", 4], ["近畿", 5], ["中国・四国", 6], ["九州", 7],["沖縄", 8] ] %>
+						</div>
 						<%= f.label :plan_introduction %></br >
 						<div class="d-grid col-12 mb-4">
 							<%= f.text_area :plan_introduction %>
