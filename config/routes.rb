@@ -6,5 +6,6 @@ Rails.application.routes.draw do
       get :myplan
     end
   end
+  resources :spots
   root "top#index"
 end

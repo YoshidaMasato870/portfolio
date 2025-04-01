@@ -3,6 +3,7 @@ ja:
     models:
       user: 'ユーザー'
       plan: 'プラン'
+      spot: '観光地'
     attributes:
       user:
         email: 'メールアドレス'
@@ -18,3 +19,7 @@ ja:
         image: 'イメージ画像'
         area_id: 'エリア'
         introduction: 'プラン紹介'
+      spot:
+        name: '観光地名'
+        image: 'イメージ画像'
+        introduction: '紹介文'

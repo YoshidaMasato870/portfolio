@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_20_025531) do
     t.string "name"
     t.string "image"
     t.string "introduction"
-    t.integer "relation_id"
+    t.integer "plan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

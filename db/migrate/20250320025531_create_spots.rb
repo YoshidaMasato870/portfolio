@@ -4,7 +4,7 @@ class CreateSpots < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :image
       t.string :introduction
-      t.integer :relation_id
+      t.integer :plan_id
 
       t.timestamps
     end
