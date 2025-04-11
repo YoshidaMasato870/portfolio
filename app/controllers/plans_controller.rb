@@ -26,7 +26,7 @@ class PlansController < ApplicationController
 	def update
 		@plan = Plan.find(params[:id])
 		if @plan.update(plan_palams)
-			redirect_to myplan_plan_path(@plan.user_id)
+			redirect_to plan_path(@plan.id)
 		else
 			render :edit
 		end
@@ -44,6 +44,6 @@ class PlansController < ApplicationController
 
 	private
 		def plan_palams
-			params.require(:plan).permit(:name, :image, :area_id, :introduction, :user_id, [spots_attributes: [:spot_id, :name, :image, :introduction]])
+			params.require(:plan).permit(:name, :image, :area_id, :introduction, :user_id, [spots_attributes: [:id, :spot_id, :name, :image, :introduction, :_destroy]])
 		end
 end

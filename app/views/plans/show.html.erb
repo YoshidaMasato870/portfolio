@@ -25,7 +25,9 @@
 				</tr>
 			</table>
 
-			<h3>観光地</h3>
+			<% if @plan_spots.exists? %>
+				<h3>観光地</h3>
+			<% end %>
 			<% @plan_spots.each do |spot| %>
 			<table class="mb-3">
 				<tr>
