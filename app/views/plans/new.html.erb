@@ -26,7 +26,17 @@
 						<div class="d-grid col-12 mb-4">
 							<%= f.text_area :introduction %>
 						</div>
-						<%= f.submit "作成", class: "btn btn-primary me-1" %>
+
+						<div>
+							<%= f.fields_for :spots do |spot| %>
+								<%= render 'spot_fields', f: spot %>
+							<% end %>
+							<div class="links mb-3">
+								<%= link_to_add_association "観光地を追加", f, :spots, class: "btn btn-info" %>
+							</div>
+						</div>
+						
+						<%= f.submit "プランを作成", class: "btn btn-primary me-1" %>
 						<%= link_to :back, class: "btn btn-primary" do %>
 							キャンセル
 						<% end %>

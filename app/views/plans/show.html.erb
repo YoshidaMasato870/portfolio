@@ -14,7 +14,7 @@
 				</div>
 				<h3><%= @plan.name %></h3>
 			</div>
-			<table>
+			<table class="mb-4">
 				<tr>
 					<th>エリア</th>
 					<td><%= change_area(@plan.area_id) %></td>
@@ -24,11 +24,33 @@
 					<td><%= @plan.introduction %></td>
 				</tr>
 			</table>
-			<% if user_signed_in? %>
-				<%= link_to "戻る", myplan_plan_path(@plan.user_id) %>
-			<% else %>
-				<%= link_to "戻る", :back %>
+
+			<h3>観光地</h3>
+			<% @plan_spots.each do |spot| %>
+			<table class="mb-3">
+				<tr>
+					<td><%= image_tag spot.image.url, size: "75x75" %></td>
+				</tr>
+				<tr>
+					<th>名称</th>
+					<td><%= spot.name %></td>
+				</tr>
+				<tr>
+					<th>詳細</th>
+					<td><%= spot.introduction %></td>
+				</tr>
+			</table>	
 			<% end %>
+
+			<div class="d-flex flex-row-reverse mb-2">
+				<div class="col-2">
+					<% if user_signed_in? %>
+						<%= link_to "戻る", myplan_plan_path(@plan.user_id), class: "btn btn-primary" %>
+					<% else %>
+						<%= link_to "戻る", :back %>
+					<% end %>
+				</div>
+			</diiv>
 		</div>
 		<div class="col-3"></div>
 	</div>

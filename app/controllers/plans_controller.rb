@@ -1,6 +1,7 @@
 class PlansController < ApplicationController
 	def new
 		@plan = Plan.new
+		@plan.spots.build
 	end
 
 	def create
@@ -15,6 +16,7 @@ class PlansController < ApplicationController
 
 	def show
 		@plan = Plan.find(params[:id])
+		@plan_spots = @plan.spots
 	end
 
 	def edit
@@ -42,6 +44,6 @@ class PlansController < ApplicationController
 
 	private
 		def plan_palams
-			params.require(:plan).permit(:name, :image, :area_id, :introduction, :user_id)
+			params.require(:plan).permit(:name, :image, :area_id, :introduction, :user_id, [spots_attributes: [:spot_id, :name, :image, :introduction]])
 		end
 end

@@ -8,6 +8,3 @@ window.Stimulus   = application
 
 export { application }
 
-import './cocoon'
-
-import 'jquery'
