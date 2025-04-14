@@ -38,6 +38,12 @@ class PlansController < ApplicationController
 		redirect_to myplan_plan_path(current_user.id)
 	end
 
+	def search
+		@q = Plan.ransack(params[:q])
+		@results = @q.result
+		@count = @results.count
+	end
+
 	def myplan
 		@plans = Plan.where(user_id: current_user.id)
 	end

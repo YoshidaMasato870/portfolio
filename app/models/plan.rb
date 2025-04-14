@@ -6,4 +6,8 @@ class Plan < ApplicationRecord
 	mount_uploader :image, PlanImageUploader
 	validates :name, presence: true
 	validates :area_id, presence: true
+
+	def self.ransackable_attributes(auth_object = nil)
+		["name", "introduction", "area_id"] 
+	end
 end

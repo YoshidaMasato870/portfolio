@@ -1,0 +1,65 @@
+<div class="container mt-4">
+	<div class="row">
+		<div class="col-2">
+		</div>
+		<div class="col-8">
+			<h2 class="mb-3">検索結果</h2>
+			<% if @count > 0 %>
+				<p><%= @count %>件のプランが見つかりました</p>
+			<% else %>
+				<p>プランが見つかりませんでした</p>
+			<% end %>
+
+			<table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="col-1"></th>
+            <th class="col-5">プラン名</th>
+            <th class="col-6">プラン詳細</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @results.each do |plan| %>
+          <tr>
+            <td><%= image_tag plan.image.url, size: "50x50" %></td>
+            <td><%= link_to "#{plan.name}", plan_path(plan.id) %></td>
+            <td><%= plan.introduction %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+
+			<div class="d-flex flex-row-reverse me-3">
+				<div><%= link_to "ホームに戻る", root_path, class: "btn btn-primary ms-3" %></div>
+				<div><%= link_to "すべてのプランを見る", plans_path, class: "btn btn-primary" %></div>
+			</div>
+
+			<h4 class="mt-4">再度検索する</h4>
+			<%= search_form_for @q, url: search_plans_path do |f| %>
+				<%= f.label :name %></br>
+				<div class="d-grid col-6">
+					<%= f.search_field :name_cont, class: "mb-2" %>
+				</div>
+				<%= f.label :introduction %>
+				<div class="d-grid col-6">
+					<%= f.search_field :introduction_cont, class: "mb-2" %>
+				</div>
+				<%= f.label :area_id %>
+				<div class="d-grid col-4">
+					<%= f.select :area_id_eq, 
+						[["北海道", 1], ["東北", 2], ["関東", 3], ["中部", 4], ["近畿", 5],
+						["中国・四国", 6], ["九州", 7],["沖縄", 8] ] %>
+				</div>
+				<div class="d-flex flex-row-reverse">
+					<div class="col-6"></div>
+					<div>
+						<%= f.submit "検索", class: "btn btn-primary mt-3" %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-2">
+		</div>
+	</div>
+</div>
