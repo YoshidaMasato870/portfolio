@@ -6,29 +6,29 @@
 			<h2 class="mb-3">検索結果</h2>
 			<% if @count > 0 %>
 				<p><%= @count %>件のプランが見つかりました</p>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th class="col-1"></th>
+							<th class="col-5">プラン名</th>
+							<th class="col-6">プラン詳細</th>
+						</tr>
+					</thead>
+
+					<tbody>
+					<% @results.each do |plan| %>
+						<tr>
+							<td><%= image_tag plan.image.url, size: "50x50" %></td>
+							<td><%= link_to "#{plan.name}", plan_path(plan.id) %></td>
+							<td><%= plan.introduction %></td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
 			<% else %>
 				<p>プランが見つかりませんでした</p>
 			<% end %>
-
-			<table class="table table-striped">
-        <thead>
-          <tr>
-            <th class="col-1"></th>
-            <th class="col-5">プラン名</th>
-            <th class="col-6">プラン詳細</th>
-          </tr>
-        </thead>
-
-        <tbody>
-        <% @results.each do |plan| %>
-          <tr>
-            <td><%= image_tag plan.image.url, size: "50x50" %></td>
-            <td><%= link_to "#{plan.name}", plan_path(plan.id) %></td>
-            <td><%= plan.introduction %></td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
 
 			<div class="d-flex flex-row-reverse me-3">
 				<div><%= link_to "ホームに戻る", root_path, class: "btn btn-primary ms-3" %></div>
