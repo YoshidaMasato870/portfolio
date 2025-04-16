@@ -72,7 +72,7 @@
 				<div class="container px-4">
 					<div class="row gx-4 justify-content-center">
 						<div class="col-lg-8">
-							<h2>検索</h2>
+							<h2>プランを検索する</h2>
 							<%= search_form_for @q, url: search_plans_path do |f| %>
 								<%= f.label :name %></br>
 								<div class="d-grid col-6">
@@ -84,9 +84,9 @@
 								</div>
 								<%= f.label :area_id %>
 								<div class="d-grid col-4">
-									<%= f.select :area_id_eq, 
+									<%= f.select :area_id_eq,
 										[["北海道", 1], ["東北", 2], ["関東", 3], ["中部", 4], ["近畿", 5],
-										["中国・四国", 6], ["九州", 7],["沖縄", 8] ] %>
+										["中国・四国", 6], ["九州", 7],["沖縄", 8]], {include_blank: "エリアを選択"} %>
 								</div>
 								<%= f.submit "検索", class: "btn btn-primary mt-3" %>
 							<% end %>
