@@ -7,8 +7,9 @@
 				<thead>
 					<tr>
 						<th class="col-1"></th>
-						<th class="col-5">プラン名</th>
+						<th class="col-4">プラン名</th>
 						<th class="col-6">プラン詳細</th>
+						<th class="col-1"></th>
 					</tr>
 				</thead>
 					<% @plans.each do |plan| %>
@@ -16,12 +17,11 @@
 						<td><%= image_tag plan.image.url, size: "50x50" %></td>
 						<td><%= link_to "#{plan.name}", plan_path(plan.id) %></td>
 						<td><%= plan.introduction %></td>
+						<td><%= render "favorites/btn", plan: plan %></td>
 					</tr>
 					<% end %>
 				<tbody>
-				<% @plans.each do |plan| %>
-					
-				<% end %>
+				
 			</table>
 			<div class="d-flex flex-row-reverse">
 				<div><%= link_to "ホームに戻る", root_path, class: "btn btn-primary" %></div>

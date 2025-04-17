@@ -2,11 +2,8 @@
 	<div class="row">
 		<div class="col-2"></div>
 		<div class="col-8">
-			<h2>作成済みプラン一覧</h2>
-			<div class="d-flex flex-row-reverse mb-2">
-				<div class="col-2"><%= link_to "プランを作成", new_plan_path %></div>
-			</div>
-			<% if @plans.exists? %>
+			<h2 class="mb-4">いいね一覧</h2>
+			<% if @favorite_plans.present? %>
 				<table class="table">
 					<head>
 						<tr>
@@ -15,24 +12,24 @@
 							<th scope="col" style="width: 12%">エリア</th>
 							<th scope="col" style="width: 34%">プラン紹介</th>
 							<th scope="col" style="width: 8%">詳細</th>
-							<th scope="col" style="width: 8%">削除</th>
+							<th scope="col" style="width: 8%"></th>
 						</tr>
 					</head>
 					<tbody>
-						<% @plans.each do |plan| %>
+						<% @favorite_plans.each do |plan| %>
 						<tr>
-							<td><%= image_tag plan.image.url, size: "50x50" %></td>
-							<td><%= plan.name %></th>
-							<td><%= change_area(plan.area_id) %></td>
-							<td><%= plan.introduction %></td>
-							<td>
+							<th><%= image_tag plan.image.url, size: "50x50" %></th>
+							<th><%= plan.name %></th>
+							<th><%= change_area(plan.area_id) %></th>
+							<th><%= plan.introduction %></th>
+							<th>
 								<%= link_to plan_path(plan.id), class: "btn btn-sm btn-primary" do %>
 									詳細
 								<% end %>
-							</td>
-							<td>
-								<%= button_to "削除", plan_path(plan.id), method: :delete, class: "btn btn-sm btn-primary" %>
-							</td>
+							</th>
+							<th>
+								<%= render "favorites/btn", plan: plan %>
+							</th>
 						</tr>
 					</tbody>
 					<% end %>
@@ -43,8 +40,8 @@
 			<div class="d-flex flex-row-reverse me-3">
 				<div><%= link_to "ホームに戻る", root_path, class: "btn btn-primary ms-3" %></div>
 			</div>
+
 		</div>
 		<div class="col-2"></div>
     </div>
 </div>
-

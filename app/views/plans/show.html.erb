@@ -12,7 +12,27 @@
 				<div class="me-4">
 					<%= image_tag @plan.image.url, size: "100x100" %>
 				</div>
-				<h3><%= @plan.name %></h3>
+				<div class="row">
+					<table>
+						<tr><h3><%= @plan.name %></h3></tr>
+						<tr>
+							<th scope="col" style="width: 5%"></th>
+							<th scope="col" style="width: 25%">作成者</th>
+							<td scope="col" style="width: 70%">
+								<%= link_to do %>
+									<h4><%= @plan_owner.name %></h4>
+								<% end %>
+							</td>
+						</tr>
+						<tr>
+							<th></th>
+							<th>いいね数</th>
+							<td>
+								<%= @plan_favorited_by.count %>  <i class="fa fa-thumbs-o-up"></i>
+							</td>
+						</tr>
+					</table>
+				</div>
 			</div>
 			<table class="mb-4">
 				<tr>

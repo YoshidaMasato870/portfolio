@@ -21,7 +21,9 @@ class PlansController < ApplicationController
 
 	def show
 		@plan = Plan.find(params[:id])
+		@plan_owner = User.find(@plan.user_id)
 		@plan_spots = @plan.spots
+		@plan_favorited_by = @plan.favorites
 	end
 
 	def edit
@@ -51,6 +53,11 @@ class PlansController < ApplicationController
 
 	def myplan
 		@plans = Plan.where(user_id: current_user.id)
+	end
+
+	def my_favorites
+		favorites = Favorite.where(user_id: current_user.id).pluck(:plan_id)
+		@favorite_plans = Plan.find(favorites)
 	end
 
 	private
