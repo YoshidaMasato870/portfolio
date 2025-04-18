@@ -63,6 +63,37 @@
 					<div class="row gx-4 justify-content-center">
 						<div class="col-lg-8">
 							<h2>話題の投稿</h2>
+							<%= link_to "人気の投稿", root_path(favorite: "true") %>
+							<%= link_to "最新の投稿", root_path(latest: "true") %>
+							<%= link_to "過去の投稿", root_path(old: "true") %>
+							<table class="table table-striped">
+							<thead>
+								<tr>
+									<th class="col-1"></th>
+									<th class="col-4">プラン名</th>
+									<th class="col-6">プラン詳細</th>
+									<th class="col-1"></th>
+								</tr>
+							</thead>
+		
+							<tbody>
+							<% @plans.each do |plan| %>
+								<tr>
+									<td><%= image_tag plan.image.url, size: "50x50" %></td>
+									<td><%= link_to "#{plan.name}", plan_path(plan.id) %></td>
+									<td><%= plan.introduction %></td>
+									<td>
+										<% if user_signed_in? %>
+											<%= render "favorites/btn", plan: plan %>
+										<% else %>
+											<%= plan.favorites.count %>
+											<i class="fa fa-thumbs-o-up"></i>
+										<% end %>
+									</td>
+								</tr>
+							<% end %>
+							</tbody>
+						</table>
 						</div>
 					</div>
 				</div>
