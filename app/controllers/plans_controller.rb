@@ -2,6 +2,7 @@ class PlansController < ApplicationController
 
 	def index
 		@plans = Plan.all
+		@q = Plan.ransack(params[:q])
 	end
 
 	def new
