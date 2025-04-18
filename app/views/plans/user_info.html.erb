@@ -1,0 +1,53 @@
+<div class="container mt-4">
+	<div class="row">
+		<div class="col-2"></div>
+		<div class="col-8">
+			<h2>ユーザー情報</h2>
+			<div class="d-flex flex-row mt-4 mb-2">
+				<div class="col-2 me-4">
+					<%= image_tag @user.image.url, size: "100x100" %>
+				</div>
+				<div class="col-8 row">
+					<table>
+						<tr>
+							<th scope="col" style="width: 20%">ユーザー名</th>
+							<td scope="col" style="width: 80%"><%= @user.name %></td>
+						</tr>
+						<tr>
+							<th>ひとこと</th>
+							<td><%= @user.comment %></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<h3 class="mt-4">作成プラン</h3>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="col-1"></th>
+						<th class="col-4">プラン名</th>
+						<th class="col-6">プラン詳細</th>
+						<th class="col-1"></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @user_plans.each do |plan| %>
+						<tr>
+							<td><%= image_tag plan.image.url, size: "50x50" %></td>
+							<td><%= link_to "#{plan.name}", plan_path(plan.id) %></td>
+							<td><%= plan.introduction %></td>
+							<td><%= render "favorites/btn", plan: plan %></td>
+						</tr>
+					<% end %>
+					</tbody>
+			</table>
+			<div class="d-flex flex-row-reverse">
+				<div class="me-3">
+					<%= link_to "プラン一覧に戻る", plans_path, class: "btn btn-primary" %>
+				</div>
+			</div>
+		</div>
+		<div class="col-2"></div>
+	</div>
+</div>

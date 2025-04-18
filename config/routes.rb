@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     member do
       get :myplan
+      get :user_info
     end
   end
   resources :spots

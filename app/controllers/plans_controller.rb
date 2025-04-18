@@ -60,6 +60,11 @@ class PlansController < ApplicationController
 		@favorite_plans = Plan.find(favorites)
 	end
 
+	def user_info
+		@user = User.find(params[:id])
+		@user_plans =@user.plans
+	end
+
 	private
 		def plan_palams
 			params.require(:plan).permit(:name, :image, :area_id, :introduction, :user_id, [spots_attributes: [:id, :spot_id, :name, :image, :introduction, :_destroy]])

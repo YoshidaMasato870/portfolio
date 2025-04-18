@@ -3,11 +3,13 @@
 		<div class="col-3"></div>
 		<div class="col-6">
 			<h2>プラン詳細</h2>
-			<% if user_signed_in? %>
-				<div class="d-flex flex-row-reverse mb-2">
-					<div class="col-2 me-4"><%= link_to "プランを編集", edit_plan_path(@plan.id) %></div>
-				</div>
-			<% end %>
+				<% if user_signed_in? %>
+					<% if @plan.user_id == current_user.id %>
+						<div class="d-flex flex-row-reverse mb-2">
+							<div class="col-2 me-4"><%= link_to "プランを編集", edit_plan_path(@plan.id) %></div>
+						</div>
+					<% end %>
+				<% end %>
 			<div class="d-flex flex-row mt-4 mb-2">
 				<div class="me-4">
 					<%= image_tag @plan.image.url, size: "100x100" %>
@@ -19,8 +21,12 @@
 							<th scope="col" style="width: 5%"></th>
 							<th scope="col" style="width: 25%">作成者</th>
 							<td scope="col" style="width: 70%">
-								<%= link_to do %>
+								<% if user_signed_in? && @plan.user_id == current_user.id %>
 									<h4><%= @plan_owner.name %></h4>
+								<% else %>
+									<%= link_to user_info_plan_path(@plan.user_id) do %>
+										<h4><%= @plan_owner.name %></h4>
+									<% end %>
 								<% end %>
 							</td>
 						</tr>
@@ -65,13 +71,13 @@
 			<% end %>
 
 			<div class="d-flex flex-row-reverse mb-2">
-				<div class="col-2">
-					<% if user_signed_in? %>
-						<%= link_to "戻る", myplan_plan_path(@plan.user_id), class: "btn btn-primary" %>
-					<% else %>
-						<%= link_to "戻る", :back %>
-					<% end %>
-				</div>
+				<% if user_signed_in? && @plan.user_id == current_user.id %>
+					<div class="col-4">
+						<%= link_to "作成済みプランに戻る", myplan_plan_path(current_user.id), class: "btn btn-primary" %>
+					</div>
+				<% else %>
+					<%= link_to "プラン一覧に戻る", plans_path, class: "btn btn-primary" %>
+				<% end %>
 			</diiv>
 		</div>
 		<div class="col-3"></div>
