@@ -42,8 +42,9 @@
 					<% end %>
 					</tbody>
 			</table>
+			<%= paginate @user_plans, theme: 'bootstrap-5' %>
 			<div class="d-flex flex-row-reverse">
-				<div class="me-3">
+				<div class="me-3 mb-5">
 					<%= link_to "プラン一覧に戻る", plans_path, class: "btn btn-primary" %>
 				</div>
 			</div>

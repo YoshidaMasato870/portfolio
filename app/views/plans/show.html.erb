@@ -76,9 +76,12 @@
 						<%= link_to "作成済みプランに戻る", myplan_plan_path(current_user.id), class: "btn btn-primary" %>
 					</div>
 				<% else %>
-					<%= link_to "プラン一覧に戻る", plans_path, class: "btn btn-primary" %>
+					<div>
+						<%= link_to "プラン一覧に戻る", plans_path, class: "btn btn-primary" %>
+						<%= link_to "ホームに戻る", root_path, class: "btn btn-primary" %>
+					</div>
 				<% end %>
-			</diiv>
+			</div>
 		</div>
 		<div class="col-3"></div>
 	</div>

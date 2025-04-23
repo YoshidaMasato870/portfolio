@@ -35,6 +35,7 @@
 					<% end %>
 					</tbody>
 				</table>
+				<%= paginate @results, theme: 'bootstrap-5' %>
 			<% else %>
 				<p>プランが見つかりませんでした</p>
 			<% end %>
@@ -63,7 +64,7 @@
 				<div class="d-flex flex-row-reverse">
 					<div class="col-6"></div>
 					<div>
-						<%= f.submit "検索", class: "btn btn-primary mt-3" %>
+						<%= f.submit "検索", class: "btn btn-primary mt-3, mb-5" %>
 					</div>
 				</div>
 			<% end %>

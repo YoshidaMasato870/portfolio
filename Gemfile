@@ -77,3 +77,7 @@ gem 'mini_magick'
 gem 'cocoon'
 
 gem 'ransack'
+
+gem 'kaminari'
+
+gem 'bootstrap5-kaminari-views'

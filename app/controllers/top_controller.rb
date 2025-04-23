@@ -2,13 +2,13 @@ class TopController < ApplicationController
 	def index
 		@q = Plan.ransack(params[:q])
 		if params[:favorite]
-			@plans = Plan.favorite
+			@plans = Kaminari.paginate_array(Plan.favorite).page(params[:page])
 		elsif params[:latest]
-			@plans = Plan.latest
+			@plans = Kaminari.paginate_array(Plan.latest).page(params[:page])
 		elsif params[:old]
-			@plans = Plan.old
+			@plans = Kaminari.paginate_array(Plan.old).page(params[:page])
 		else
-			@plans = Plan.favorite
+			@plans = Kaminari.paginate_array(Plan.favorite).page(params[:page])
 		end
 	end
 end

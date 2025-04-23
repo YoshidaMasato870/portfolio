@@ -62,7 +62,15 @@
 				<div class="container px-4">
 					<div class="row gx-4 justify-content-center">
 						<div class="col-lg-8">
-							<h2>話題の投稿</h2>
+							<% if params[:favorite] %>
+								<h2>人気の投稿</h2>
+							<% elsif params[:latest] %>
+								<h2>最新の投稿</h2>
+							<% elsif params[:old] %>
+								<h2>過去の投稿</h2>
+							<% else %>
+								<h2>人気の投稿</h2>
+							<% end %>
 							<%= link_to "人気の投稿", root_path(favorite: "true") %>
 							<%= link_to "最新の投稿", root_path(latest: "true") %>
 							<%= link_to "過去の投稿", root_path(old: "true") %>
@@ -94,6 +102,7 @@
 							<% end %>
 							</tbody>
 						</table>
+						<%= paginate @plans, theme: 'bootstrap-5' %>
 						</div>
 					</div>
 				</div>

@@ -4,8 +4,8 @@
 		<div class="col-8">
 			<h2 class="mb-4">いいね一覧</h2>
 			<% if @favorite_plans.present? %>
-				<table class="table">
-					<head>
+				<table class="table table-striped">
+					<thead>
 						<tr>
 							<th scope="col" style="width: 8%"></th>
 							<th scope="col" style="width: 20%">プラン名</th>
@@ -14,7 +14,7 @@
 							<th scope="col" style="width: 8%">詳細</th>
 							<th scope="col" style="width: 8%"></th>
 						</tr>
-					</head>
+					</thead>
 					<tbody>
 						<% @favorite_plans.each do |plan| %>
 						<tr>
@@ -31,14 +31,16 @@
 								<%= render "favorites/btn", plan: plan %>
 							</th>
 						</tr>
+						<% end %>
 					</tbody>
-					<% end %>
+				</table>
+				<%= paginate @favorite_plans, theme: 'bootstrap-5' %>
 				<% else %>
 					<h4 class="mt-2">プランはありません</h4>
 				<% end %>
 			</table>
 			<div class="d-flex flex-row-reverse me-3">
-				<div><%= link_to "ホームに戻る", root_path, class: "btn btn-primary ms-3" %></div>
+				<div><%= link_to "ホームに戻る", root_path, class: "btn btn-primary ms-3 mb-5" %></div>
 			</div>
 
 		</div>

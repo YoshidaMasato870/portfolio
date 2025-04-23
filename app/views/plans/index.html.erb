@@ -4,6 +4,7 @@
 		<div class="col-8">
 			<h2 class="mb-3">プラン一覧</h2>
 			<table class="table table-striped">
+				<p><%= @count %>件のプランが見つかりました</p>
 				<thead>
 					<tr>
 						<th class="col-1"></th>
@@ -12,6 +13,7 @@
 						<th class="col-1"></th>
 					</tr>
 				</thead>
+				<tbody>
 					<% @plans.each do |plan| %>
 					<tr>
 						<td><%= image_tag plan.image.url, size: "50x50" %></td>
@@ -29,6 +31,7 @@
 					<% end %>
 				<tbody>	
 			</table>
+			<%= paginate @plans, theme: 'bootstrap-5' %>
 			<div class="d-flex flex-row-reverse">
 				<div><%= link_to "ホームに戻る", root_path, class: "btn btn-primary" %></div>
 			</div>

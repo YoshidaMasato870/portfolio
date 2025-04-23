@@ -1,7 +1,8 @@
 class PlansController < ApplicationController
 
 	def index
-		@plans = Plan.all
+		@plans = Plan.all.page(params[:page])
+		@count = Plan.all.count
 		@q = Plan.ransack(params[:q])
 	end
 
@@ -48,22 +49,23 @@ class PlansController < ApplicationController
 
 	def search
 		@q = Plan.ransack(params[:q])
-		@results = @q.result
-		@count = @results.count
+		@results = @q.result.page(params[:page])
+		@count = @q.result.count
 	end
 
 	def myplan
-		@plans = Plan.where(user_id: current_user.id)
+		@plans = Plan.where(user_id: current_user.id).page(params[:page])
 	end
 
 	def my_favorites
 		favorites = Favorite.where(user_id: current_user.id).pluck(:plan_id)
 		@favorite_plans = Plan.find(favorites)
+		@favorite_plans = Kaminari.paginate_array(@favorite_plans).page(params[:page])
 	end
 
 	def user_info
 		@user = User.find(params[:id])
-		@user_plans =@user.plans
+		@user_plans =@user.plans.page(params[:page])
 	end
 
 	private
